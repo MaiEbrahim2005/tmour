@@ -1,0 +1,127 @@
+<!-- ✅ products.html -->
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>كل المنتجات | تمور الجهاد</title>
+
+  <!-- Fonts & Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="styles/style.css" />
+  <link rel="stylesheet" href="styles/animate.css" />
+
+  <link rel="icon" type="image/x-icon" href="images/favicon.png">
+</head>
+
+<!-- ✅ هنا التعديل: صفحة المنتجات تعرض الكل -->
+<body data-products-limit="all">
+
+  <!-- 🏮 Navigation -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <!-- Logo -->
+      <div class="nav-logo">
+        <i class="fas fa-tree"></i>
+        <span class="logo-text">تمور<span class="logo-highlight"> الجهاد</span></span>
+      </div>
+
+      <!-- Desktop Menu -->
+      <ul class="nav-menu">
+        <li class="nav-item">
+          <a href="index.html#home" class="nav-link">
+            <i class="fas fa-home"></i>
+            <span>الرئيسية</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="products.html" class="nav-link active">
+            <i class="fas fa-shopping-basket"></i>
+            <span>كل المنتجات</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="index.html#contact" class="nav-link">
+            <i class="fas fa-phone-alt"></i>
+            <span>اتصل بنا</span>
+          </a>
+        </li>
+      </ul>
+
+      <!-- Auth Buttons -->
+      <div class="nav-auth">
+        <a href="login.html" class="btn-auth login-btn" data-auth-action="login" id="loginLink">
+          <i class="fas fa-sign-in-alt"></i>
+          <span>تسجيل الدخول</span>
+        </a>
+
+        <a href="login.html" class="btn-auth register-btn" data-auth-action="register" id="registerLink">
+          <i class="fas fa-user-plus"></i>
+          <span>إنشاء حساب</span>
+        </a>
+
+        <!-- Cart (يظهر بعد اللوجين فقط) -->
+        <a href="cart.html" class="btn-auth register-btn" id="cartLink" style="display:none;">
+          <i class="fas fa-cart-shopping"></i>
+          <span>السلة</span>
+          <span id="cartCount"
+                style="margin-right:8px; min-width:22px; height:22px; padding:0 6px;
+                       border-radius:999px; background:#FFD700; color:#5A3921;
+                       display:inline-flex; align-items:center; justify-content:center;
+                       font-size:12px; font-weight:800;">
+            0
+          </span>
+        </a>
+
+        <a href="#" class="btn-auth login-btn" id="logoutLink" style="display:none;">
+          <i class="fas fa-right-from-bracket"></i>
+          <span>تسجيل خروج</span>
+        </a>
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <div class="hamburger">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- 🛒 All Products Section -->
+  <section class="products-section" style="padding-top:120px;">
+    <div class="section-header">
+      <h2 class="section-title">كل <span>المنتجات</span></h2>
+      <p class="section-subtitle">تصفح جميع منتجات تمور الجهاد</p>
+    </div>
+
+    <div class="products-grid" id="productsContainer">
+      <!-- سيتم ملؤه بالمنتجات عبر JavaScript -->
+    </div>
+
+    <div class="text-center">
+      <a href="index.html#products" class="view-all-btn">
+        <span>رجوع للصفحة الرئيسية</span>
+        <i class="fas fa-arrow-left"></i>
+      </a>
+    </div>
+  </section>
+
+  <!-- 📦 Scripts -->
+  <script src="js/auth.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/products.js"></script>
+  <script src="js/animations.js"></script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (typeof initAnimations === "function") initAnimations();
+      // مفيش داعي ننادي loadProducts هنا؛ main.js هيتصرف حسب data-products-limit
+    });
+  </script>
+</body>
+</html>

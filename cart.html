@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>السلة | تمور الجهاد</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="Styles/style.css" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='0.9em' font-size='90'%3E🌴%3C/text%3E%3C/svg%3E">
+</head>
+
+<body>
+
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="nav-logo">
+        <i class="fas fa-tree"></i>
+        <span class="logo-text">تمور<span class="logo-highlight"> الجهاد</span></span>
+      </div>
+
+      <ul class="nav-menu">
+        <li class="nav-item">
+          <a href="index.html#home" class="nav-link">
+            <i class="fas fa-home"></i>
+            <span>الرئيسية</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="cart.html" class="nav-link active">
+            <i class="fas fa-cart-shopping"></i>
+            <span>السلة</span>
+          </a>
+        </li>
+      </ul>
+
+      <div class="nav-auth">
+        <a href="cart.html" class="btn-auth register-btn" id="cartLink" style="display:none;">
+          <i class="fas fa-cart-shopping"></i>
+          <span>السلة</span>
+          <span id="cartCount"
+                style="margin-right:8px; min-width:22px; height:22px; padding:0 6px;
+                       border-radius:999px; background:#FFD700; color:#5A3921;
+                       display:inline-flex; align-items:center; justify-content:center;
+                       font-size:12px; font-weight:800;">
+            0
+          </span>
+        </a>
+
+        <a href="#" class="btn-auth login-btn" id="logoutLink" style="display:none;">
+          <i class="fas fa-right-from-bracket"></i>
+          <span>تسجيل خروج</span>
+        </a>
+
+        <a href="login.html" class="btn-auth login-btn" data-auth-action="login" id="loginLink">
+          <i class="fas fa-sign-in-alt"></i>
+          <span>تسجيل الدخول</span>
+        </a>
+
+        <a href="login.html" class="btn-auth register-btn" data-auth-action="register" id="registerLink">
+          <i class="fas fa-user-plus"></i>
+          <span>إنشاء حساب</span>
+        </a>
+      </div>
+
+      <!-- ✅ Mobile Menu Button -->
+      <div class="hamburger">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </div>
+
+    </div>
+  </nav>
+
+  <section class="products-section" style="padding-top:120px;">
+    <div class="section-header">
+      <h2 class="section-title">سلة <span>المشتريات</span></h2>
+      <p class="section-subtitle">راجع منتجاتك قبل تأكيد الطلب</p>
+    </div>
+
+    <div class="products-grid" id="cartContainer"></div>
+
+    <!-- ✅ Shipping Form -->
+    <div style="max-width:1200px; margin:18px auto 0; padding:16px; border:1px solid #eee; border-radius:16px;">
+      <h3 style="margin:0 0 12px; font-weight:900;">بيانات الشحن</h3>
+
+      <form id="shippingForm" style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
+        <div style="display:flex; flex-direction:column; gap:6px;">
+          <label style="font-weight:800;">الاسم</label>
+          <input id="shipName" type="text" required placeholder="اكتب اسمك"
+                 style="padding:12px; border-radius:12px; border:1px solid #ddd;">
+        </div>
+
+        <div style="display:flex; flex-direction:column; gap:6px;">
+          <label style="font-weight:800;">رقم الموبايل</label>
+          <input id="shipPhone" type="tel" required placeholder="01XXXXXXXXX"
+                 style="padding:12px; border-radius:12px; border:1px solid #ddd;">
+        </div>
+
+        <div style="display:flex; flex-direction:column; gap:6px; grid-column:1/-1;">
+          <label style="font-weight:800;">العنوان بالتفصيل</label>
+          <input id="shipAddress" type="text" required placeholder="المحافظة - المدينة - الشارع - رقم البيت..."
+                 style="padding:12px; border-radius:12px; border:1px solid #ddd;">
+        </div>
+
+        <div style="display:flex; flex-direction:column; gap:6px;">
+          <label style="font-weight:800;">ملاحظات (اختياري)</label>
+          <input id="shipNotes" type="text" placeholder="علامة مميزة / وقت مناسب..."
+                 style="padding:12px; border-radius:12px; border:1px solid #ddd;">
+        </div>
+      </form>
+    </div>
+
+    <div style="max-width:1200px; margin:18px auto 0; display:flex; gap:1rem; flex-wrap:wrap; justify-content:space-between; align-items:center;">
+      <div style="font-weight:800; font-size:1.2rem;">
+        الإجمالي: <span id="cartTotal" style="color:#D4A762;">0</span> ج.م
+      </div>
+
+      <div style="display:flex; gap:10px; flex-wrap:wrap;">
+        <button class="add-to-cart" id="clearCartBtn" type="button">
+          <i class="fas fa-trash"></i>
+          <span>تفريغ السلة</span>
+        </button>
+
+        <button class="add-to-cart" id="confirmOrderBtn" type="button" style="background:#28a745;">
+          <i class="fas fa-check"></i>
+          <span>تأكيد الطلب</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <script src="js/auth.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/products.js"></script>
+  <script src="js/cart.js"></script>
+</body>
+</html>

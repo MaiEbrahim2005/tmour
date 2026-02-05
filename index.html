@@ -1,0 +1,339 @@
+<!-- ✅ index.html -->
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تمور الجهاد</title>
+    
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="Styles/style.css">    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='0.9em' font-size='90'%3E🌴%3C/text%3E%3C/svg%3E">
+</head>
+
+<!-- ✅ هنا التعديل: خلي الهوم يعرض 3 منتجات بس -->
+<body data-products-limit="3">
+
+    <!-- 🎯 Loading Screen -->
+    <div class="loader-wrapper">
+        <div class="loader">
+            <div class="loader-inner">
+                <i class="fas fa-date"></i>
+                <span>تمور الجهاد</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 🏮 Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <!-- Logo -->
+            <div class="nav-logo">
+                <i class="fas fa-tree"></i>
+                <span class="logo-text">تمور<span class="logo-highlight"> الجهاد</span></span>
+            </div>
+
+            <!-- Desktop Menu -->
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="#home" class="nav-link active">
+                        <i class="fas fa-home"></i>
+                        <span>الرئيسية</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#products" class="nav-link">
+                        <i class="fas fa-shopping-basket"></i>
+                        <span>منتجاتنا</span>
+                    </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="#contact" class="nav-link">
+                        <i class="fas fa-phone-alt"></i>
+                        <span>اتصل بنا</span>
+                    </a>
+                </li>
+            </ul>
+
+            <!-- Auth Buttons -->
+            <div class="nav-auth">
+              <a href="login.html" class="btn-auth login-btn" data-auth-action="login" id="loginLink">
+                <i class="fas fa-sign-in-alt"></i>
+                <span>تسجيل الدخول</span>
+              </a>
+
+              <a href="login.html" class="btn-auth register-btn" data-auth-action="register" id="registerLink">
+                <i class="fas fa-user-plus"></i>
+                <span>إنشاء حساب</span>
+              </a>
+
+              <!-- Cart (يظهر بعد اللوجين ) -->
+              <a href="cart.html" class="btn-auth register-btn" id="cartLink" style="display:none;">
+                <i class="fas fa-cart-shopping"></i>
+                <span>السلة</span>
+                <span id="cartCount"
+                      style="margin-right:8px; min-width:22px; height:22px; padding:0 6px;
+                             border-radius:999px; background:#FFD700; color:#5A3921;
+                             display:inline-flex; align-items:center; justify-content:center;
+                             font-size:12px; font-weight:800;">
+                  0
+                </span>
+              </a>
+
+              <a href="#" class="btn-auth login-btn" id="logoutLink" style="display:none;">
+                <i class="fas fa-right-from-bracket"></i>
+                <span>تسجيل خروج</span>
+              </a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 🎨 Hero Section -->
+    <section id="home" class="hero-section">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1 class="hero-title animate-text">
+                <span class="text-line">تمور الجهاد..</span>
+                <span class="text-line">في كل تمرة </span>
+                <span class="text-line">حكاية أرض </span>
+                <span class="text-line">ودعوة جد</span>
+            </h1>
+            <p class="hero-subtitle">نختار لك أجود ثمار النخيل </p>
+            
+            <div class="hero-cta">
+                <a href="#products" class="cta-btn primary-cta">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span>تسوق الآن</span>
+                    <div class="cta-hover-effect"></div>
+                </a>
+            </div>
+        </div>
+
+        <!-- Floating Elements -->
+        <div class="floating-dates">
+            <div class="floating-date date1"><i class="fas fa-date"></i></div>
+            <div class="floating-date date2"><i class="fas fa-leaf"></i></div>
+            <div class="floating-date date3"><i class="fas fa-seedling"></i></div>
+            <div class="floating-date date4"><i class="fas fa-tree"></i></div>
+        </div>
+
+        <!-- Scroll Indicator -->
+        <div class="scroll-indicator">
+            <div class="mouse">
+                <div class="wheel"></div>
+            </div>
+            <span>قم بالتمرير</span>
+        </div>
+    </section>
+
+    <!-- 🌟 Features Section -->
+    <section class="features-section">
+        <div class="section-header">
+            <h2 class="section-title"> لماذا تختار <span> تمور الجهاد؟</span></h2>
+            <p class="section-subtitle">"نؤمن بأن الجودة الحقيقية هي سلسلة متكاملة.. تبدأ من عنايتنا بالنخلة وتتوج برضاك عن كل تمرة تصل إليك"</p>
+        </div>
+
+        <div class="features-grid">
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h3 class="feature-title">طزاجة مضمونة</h3>
+                    <p class="feature-desc">نقطف التمور في ذروة نضجها وننقلها مباشرة من المزرعة لتصل إليك بأقصى درجات النضارة</p>
+                    <div class="feature-wave"></div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <h3 class="feature-title">تميز في الجودة</h3>
+                    <p class="feature-desc">نعتمد معايير جودة صارمة في اختيار وتعبئة كل تمرة لضمان تجربة تذوق استثنائية</p>
+                    <div class="feature-wave"></div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shipping-fast"></i>
+                    </div>
+                    <h3 class="feature-title">توصيل سريع وآمن</h3>
+                    <p class="feature-desc">شبكة توصيل موثوقة تضمن وصول منتجاتك في الوقت المحدد وبأفضل حالة</p>
+                    <div class="feature-wave"></div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3 class="feature-title">رعاية متواصلة</h3>
+                    <p class="feature-desc">دعم فني متاح على مدار الساعة لمساعدتك والرد على استفساراتك بكل ترحيب</p>
+                    <div class="feature-wave"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 🛒 Products Section -->
+    <section id="products" class="products-section">
+        <div class="section-header">
+            <h2 class="section-title">منتجاتنا <span>المميزة</span></h2>
+            <p class="section-subtitle">اختار من بين تشكيلتنا الفاخرة من البلح</p>
+        </div>
+
+        <!-- Products Grid -->
+        <div class="products-grid" id="productsContainer">
+            <!-- سيتم ملؤه بالمنتجات عبر JavaScript -->
+        </div>
+
+        <!-- View All Button -->
+        <div class="text-center">
+            <a href="products.html" class="view-all-btn">
+                <span>عرض كل المنتجات</span>
+                <i class="fas fa-arrow-left"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- 📞 Contact Section -->
+    <section id="contact" class="contact-section">
+        <div class="contact-container">
+            <div class="contact-info">
+                <h2 class="contact-title">تواصل <span>معنا</span></h2>
+                <p class="contact-subtitle">نحن هنا لخدمتك على مدار الساعة</p>
+                
+                <div class="contact-details">
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h4>اتصل بنا</h4>
+                            <p><a href="tel:+201091680969">+201091680969</a></p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h4>العنوان</h4>
+                            <p>الوادي الجديد - واحة الداخلة</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="social-media">
+                    <a href="https://www.facebook.com/share/1DZak4CD7G/" class="social-icon"><i class="fab fa-facebook"></i></a>
+                    
+                </div>
+            </div>
+
+            <div class="contact-form">
+                <form id="contactForm">
+                    <div class="form-group">
+                        <input type="text" placeholder="اسمك الكريم" required>
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" placeholder="بريدك الإلكتروني" required>
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="form-group">
+                        <textarea placeholder="رسالتك..." rows="4" required></textarea>
+                        <i class="fas fa-comment"></i>
+                    </div>
+                    <button type="submit" class="submit-btn">
+                        <i class="fas fa-paper-plane"></i>
+                        <span>إرسال الرسالة</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- 🔔 WhatsApp Float -->
+    <a href="https://wa.me/201091680969" class="whatsapp-float" target="_blank" title="تواصل عبر واتساب">
+        <i class="fab fa-whatsapp"></i>
+        <span class="whatsapp-text">اطلب الآن</span>
+    </a>
+
+    <!-- ⬆️ Scroll to Top -->
+    <button class="scroll-top">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <!-- 🏁 Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <i class="fas fa-tree"></i>
+                <span>تمور<span>الجهاد</span></span>
+                <p class="footer-slogan">نكهة الأصالة في كل حبة</p>
+            </div>
+
+            <div class="footer-links">
+                <div class="footer-column">
+                    <h4>روابط سريعة</h4>
+                    <ul>
+                        <li><a href="#home">الرئيسية</a></li>
+                        <li><a href="#products">المنتجات</a></li>
+                        <li><a href="#contact">اتصل بنا</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>المساعدة</h4>
+                    <ul>
+                        <li><a href="#">الشحن والتوصيل</a></li>
+                        <li><a href="#">الأسئلة الشائعة</a></li>
+                        <li><a href="#">سياسة الخصوصية</a></li>
+                        <li><a href="#">الشروط والأحكام</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 تمور الجهاد. جميع الحقوق محفوظة | تصميم وتطوير: <strong>Eng. M Ebrahim</strong></p>
+        </div>
+    </footer>
+
+    <!-- 📦 Scripts -->
+    <script src="js/auth.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/products.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Remove loader
+            setTimeout(() => {
+                const loader = document.querySelector('.loader-wrapper');
+                if (!loader) return;
+                loader.style.opacity = '0';
+                setTimeout(() => {
+                    loader.style.display = 'none';
+                }, 500);
+            }, 1500);
+
+            // Initialize animations (لو موجودة)
+            if (typeof initAnimations === "function") initAnimations();
+
+            
+            if (typeof initTestimonials === "function") initTestimonials();
+
+            console.log('🚀 موقع بلحنا جاهز للعمل!');
+        });
+    </script>
+</body>
+</html>

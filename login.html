@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>تسجيل الدخول | تمور الجهاد</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='0.9em' font-size='90'%3E🌴%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="styles/style.css">
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="nav-logo">
+        <i class="fas fa-tree"></i>
+        <span class="logo-text">تمور<span class="logo-highlight"> الجهاد</span></span>
+      </div>
+
+      <ul class="nav-menu">
+        <li class="nav-item">
+          <a href="index.html#home" class="nav-link">
+            <i class="fas fa-home"></i>
+            <span>الرئيسية</span>
+          </a>
+        </li>
+      </ul>
+
+      <div class="nav-auth">
+        <a href="#" class="btn-auth login-btn" id="loginTabBtn">
+          <i class="fas fa-sign-in-alt"></i>
+          <span>تسجيل الدخول</span>
+        </a>
+        <a href="#" class="btn-auth register-btn" id="registerTabBtn">
+          <i class="fas fa-user-plus"></i>
+          <span>إنشاء حساب</span>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <section class="contact-section" style="padding-top:120px;">
+    <div class="contact-container">
+      <div class="contact-info">
+        <h2 class="contact-title">أهلاً بيك في <span>تمور الجهاد</span></h2>
+        <p class="contact-subtitle">سجّل دخولك علشان تقدر تضيف منتجات للسلة وتكمل طلبك</p>
+
+        <!-- <div class="contact-details">
+          <div class="contact-item">
+            <i class="fas fa-lock"></i>
+            <div>
+              <h4>حماية الأكشنز</h4>
+              <p>إضافة للسلة متاحة بعد تسجيل الدخول فقط</p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <i class="fas fa-rotate-left"></i>
+            <div>
+              <h4>هترجعي لنفس المكان</h4>
+              <p>بعد اللوجين هتروحي لنفس الصفحة اللي كنتِ فيها</p>
+            </div>
+          </div>
+        </div> -->
+      </div>
+
+      <div class="contact-form">
+
+        <!-- Login -->
+        <div id="loginPanel">
+          <form id="loginForm">
+            <div class="form-group">
+              <input type="email" name="email" placeholder="البريد الإلكتروني" required>
+              <i class="fas fa-envelope"></i>
+            </div>
+            <div class="form-group">
+              <input type="password" name="password" placeholder="كلمة المرور" required>
+              <i class="fas fa-key"></i>
+            </div>
+            <button type="submit" class="submit-btn">
+              <i class="fas fa-sign-in-alt"></i>
+              <span>تسجيل الدخول</span>
+            </button>
+          </form>
+        </div>
+
+        <!-- Register -->
+        <div id="registerPanel" style="display:none;">
+          <form id="registerForm">
+            <div class="form-group">
+              <input type="text" name="name" placeholder="الاسم" required>
+              <i class="fas fa-user"></i>
+            </div>
+            <div class="form-group">
+              <input type="email" name="email" placeholder="البريد الإلكتروني" required>
+              <i class="fas fa-envelope"></i>
+            </div>
+            <div class="form-group">
+              <input type="password" name="password" placeholder="كلمة المرور" required>
+              <i class="fas fa-key"></i>
+            </div>
+            <button type="submit" class="submit-btn">
+              <i class="fas fa-user-plus"></i>
+              <span>إنشاء الحساب</span>
+            </button>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
+<script src="js/toast.js"></script>
+<script src="js/auth.js"></script>
+
+</body>
+</html>
