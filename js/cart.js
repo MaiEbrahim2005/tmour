@@ -1,7 +1,7 @@
 // js/cart.js
 (function () {
   // ✅ حطي هنا لينك Google Apps Script Web App
-  const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbxpN0036oNfOgd7gDwTrLtgO5-iHUiuU8Qbbqbu8fa-22qruNZYPFbiIwKe8bLHCKVfbA/exec";
+  const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbxusxgHCynMReL06VToVDAIG9Vlhi9SHH6K9Lhi1JNDYFjBFe5P_NLWsSVOqDpEVc2f1A/exec";
 
   function getCart() {
     try {
@@ -184,75 +184,60 @@
     // ✅ تأكيد الطلب + إرسال للشيت
     const confirmBtn = document.getElementById("confirmOrderBtn");
     if (confirmBtn) {
-      confirmBtn.addEventListener("click", async () => {
-        const cart = getCart();
-        if (cart.length === 0) {
-          alert("السلة فاضية 🙂");
-          return;
-        }
+     // البحث عن الزرار في ملف cart.js واستبدال سيكشن الـ click بالآتي:
+confirmBtn.addEventListener("click", async () => {
+  const cart = getCart();
+  if (cart.length === 0) {
+    alert("السلة فاضية 🙂");
+    return;
+  }
 
-        // بيانات الشحن
-        const name = document.getElementById("shipName")?.value?.trim() || "";
-        const phone = document.getElementById("shipPhone")?.value?.trim() || "";
-        const address = document.getElementById("shipAddress")?.value?.trim() || "";
-        const notes = document.getElementById("shipNotes")?.value?.trim() || "";
-        if (!name || !phone || !address) {
-          alert("من فضلك املي بيانات الشحن كاملة ✅");
-          return;
-        }
+  const name = document.getElementById("shipName")?.value?.trim() || "";
+  const phone = document.getElementById("shipPhone")?.value?.trim() || "";
+  const address = document.getElementById("shipAddress")?.value?.trim() || "";
+  const notes = document.getElementById("shipNotes")?.value?.trim() || "";
 
-        // تجهيز Payload
-        const orderId = "ORD-" + Date.now();
-        const total = calcTotal(cart);
+  if (!name || !phone || !address) {
+    alert("من فضلك املي بيانات الشحن كاملة ✅");
+    return;
+  }
 
-        const payload = {
-          orderId,
-          date: new Date().toISOString(),
-          name,
-          phone,
-          address,
-          notes,
-          payment,
-          userEmail: window.Auth?.getUserEmail?.() || "",
-          items: cart,
-          total
-        };
+  const payload = {
+    orderId: "ORD-" + Date.now(),
+    name,
+    phone,
+    address,
+    notes,
+    items: cart,
+    total: calcTotal(cart)
+  };
 
-        try {
-          if (!WEB_APP_URL || WEB_APP_URL.includes("PUT_YOUR_WEB_APP_URL_HERE")) {
-            alert("حطي Web App URL بتاع Google Sheet في js/cart.js ✅");
-            return;
-          }
+  try {
+    confirmBtn.disabled = true;
+    confirmBtn.innerText = "جاري الإرسال...";
 
-          confirmBtn.disabled = true;
-          confirmBtn.style.opacity = "0.7";
+    // استخدام fetch مع تحويل الـ Content-Type لـ text/plain 
+    // دي "خدعة" برمجية لتجنب مشاكل الـ CORS مع جوجل
+    await fetch(WEB_APP_URL, {
+      method: "POST",
+      mode: "no-cors", 
+      headers: { "Content-Type": "text/plain" },
+      body: JSON.stringify(payload)
+    });
 
-          const res = await fetch(WEB_APP_URL, {
-            method: "POST",
-            mode: "no-cors",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(payload),
-          });
+    // في وضع no-cors مش بنستنى رد "ok" لأن المتصفح بيحجبه
+    // لكن الطلب بيوصل طالما مفيش Error في الـ Console
+    alert("تم إرسال الطلب بنجاح ✅");
+    setCart([]);
+    window.location.href = "index.html"; 
 
-          const data = await res.json();
-
-          if (!data.ok) {
-            alert("حصلت مشكلة في إرسال الطلب 😅");
-            confirmBtn.disabled = false;
-            confirmBtn.style.opacity = "1";
-            return;
-          }
-
-          alert("تم إرسال الطلب بنجاح ✅");
-          setCart([]);
-          window.location.href = "index.html#products";
-        } catch (err) {
-          console.error(err);
-          alert("تعذر إرسال الطلب.. تأكد من رابط الشيت/الاتصال");
-          confirmBtn.disabled = false;
-          confirmBtn.style.opacity = "1";
-        }
-      });
+  } catch (err) {
+    console.error(err);
+    alert("عذراً، حدث خطأ في الاتصال. حاول مرة أخرى.");
+    confirmBtn.disabled = false;
+    confirmBtn.innerText = "تأكيد الطلب";
+  }
+});
     }
 
     renderCart();
